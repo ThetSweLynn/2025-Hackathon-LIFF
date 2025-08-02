@@ -1,76 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
-    />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover" />
     <title>LIFF: LINE Front-end Framework</title>
-    <script src="https://cdn.jsdelivr.net/gh/iamprompt/liff-sdk@latest/liff/edge/2/sdk.js"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script>
-      async function initializeLiff() {
-        try {
-          await liff.init({ liffId: "YOUR-LIFF-ID" });
-          if (!liff.isLoggedIn()) {
-            liff.login();
-          }
-        } catch (error) {
-          console.error("Error initializing LIFF:", error);
-        }
-      }
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="back-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256">
+                    <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/>
+                </svg>
+            </button>
+            <h2>Available Tasks</h2>
+        </header>
 
-      document.addEventListener("DOMContentLoaded", () => {
-        initializeLiff();
-        
-        // Handle navigation clicks
-        const navLinks = document.querySelectorAll('a[href="#"]');
-        navLinks.forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            navLinks.forEach(l => {
-              l.classList.remove('text-[#101810]');
-              l.classList.add('text-[#5c8a5c]');
-              l.querySelector('div').classList.remove('text-[#101810]');
-              l.querySelector('div').classList.add('text-[#5c8a5c]');
-              l.querySelector('p').classList.remove('text-[#101810]');
-              l.querySelector('p').classList.add('text-[#5c8a5c]');
-            });
-            link.classList.remove('text-[#5c8a5c]');
-            link.classList.add('text-[#101810]');
-            link.querySelector('div').classList.remove('text-[#5c8a5c]');
-            link.querySelector('div').classList.add('text-[#101810]');
-            link.querySelector('p').classList.remove('text-[#5c8a5c]');
-            link.querySelector('p').classList.add('text-[#101810]');
-          });
-        });
-      });
-    </script>
-  </head>
-  <body>
-    <div
-      class="relative flex size-full min-h-screen flex-col bg-[#f9fbf9] justify-between group/design-root overflow-x-hidden"
-      style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'
-    >
-      <div>
-        <div class="flex items-center bg-[#f9fbf9] p-4 pb-2 justify-between">
-          <div class="text-[#101810] flex size-12 shrink-0 items-center" data-icon="ArrowLeft" data-size="24px" data-weight="regular">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-              <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
-            </svg>
-          </div>
-          <h2 class="text-[#101810] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Available Tasks</h2>
-        </div>
-        <div class="flex items-center gap-4 bg-[#f9fbf9] px-4 min-h-[72px] py-2 justify-between">
-          <div class="flex items-center gap-4">
-            <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-lg size-14"
-              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCX4239T5ZJus0wYunFprlwJzdzxyu_GhThirwJF9FkcX_MJSFknrCpelKGkdZLCA5PSElL_h1JDKXUZZ_uC5x0I_3Yqo12nOPpxyMHlRd8bDIDqJVbUvZ4V7lY3qzwKlDcgL9QciRw1nNkoYG0ukGDUfh6iBmMOI6xzshGH5E29nbojegZH7fdp2ivtb-ttKmTQepbvhjGy98p91DZ9BglTKOR_ETZ011N0Rz_B8Tcys72oISZ_qUVFdZ_H-YT5tA9bsjM1RyNe7U");'
-            ></div>
-            <div class="flex flex-col justify-center">
-              <p class="text-[#101810] text-base font-medium leading-normal line-clamp-1">Complete your profile</p>
-              <p class="text-[#5c8a5c] text-sm font-normal leading-normal line-clamp-2">Earn 50 points</p>
+        <main>
+            <div class="task-card">
+                <img src="profile-task.jpg" alt="Complete profile">
+                <div class="task-info">
+                    <p class="task-title">Complete your profile</p>
+                    <p class="task-points">Earn 50 points</p>
+                </div>
+                <button class="task-button">Start</button>
+            </div>
+            <div class="task-card">
+                <img src="invite-task.jpg" alt="Invite a friend">
+                <div class="task-info">
+                    <p class="task-title">Invite a friend</p>
+                    <p class="task-points">Earn 20 points</p>
+                </div>
+                <button class="task-button">Start</button>
+            </div>
+            <div class="task-card">
+                <img src="complete-tasks.jpg" alt="Complete 5 tasks">
+                <div class="task-info">
+                    <p class="task-title">Complete 5 tasks</p>
+                    <p class="task-points">Earn 100 points</p>
+                </div>
+                <button class="task-button">Start</button>
+            </div>
+            <div class="task-card">
+                <img src="share-progress.jpg" alt="Share your progress">
+                <div class="task-info">
+                    <p class="task-title">Share your progress</p>
+                    <p class="task-points">Earn 30 points</p>
+                </div>
+                <button class="task-button">Start</button>
+            </div>
+        </main>
+
+        <nav>
+            <a href="#" class="nav-item active">
+                <svg><!-- Tasks icon SVG --></svg>
+                <span>Tasks</span>
+            </a>
+            <a href="#" class="nav-item">
+                <svg><!-- Rewards icon SVG --></svg>
+                <span>Rewards</span>
+            </a>
+            <a href="#" class="nav-item">
+                <svg><!-- Profile icon SVG --></svg>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
             </div>
           </div>
           <div class="shrink-0">

@@ -1,5 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  margin: 20px
+  font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
+  background: #f9fbf9;
+  color: #101810;
+  margin: 20px;
 }
 
 button {
@@ -13,7 +22,7 @@ button {
 }
 
 p {
-  border-bottom: 1px dashed #ddd
+  border-bottom: 1px dashed #ddd;
 }
 
 #pictureUrl {
@@ -35,5 +44,98 @@ p {
 
 #accessToken, #utouId {
   display: block;
-  overflow: auto
+  overflow: auto;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+h2 {
+  flex: 1;
+  text-align: center;
+  font-size: 1.125rem;
+  margin-right: 3rem;
+}
+
+.task-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  border-bottom: 1px solid #eaf1ea;
+}
+
+.task-card img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-title {
+  font-weight: 500;
+}
+
+.task-points {
+  color: #5c8a5c;
+  font-size: 0.875rem;
+}
+
+.task-button {
+  padding: 0.5rem 1rem;
+  background: #eaf1ea;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+
+nav {
+  margin-top: auto;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #eaf1ea;
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #5c8a5c;
+  gap: 0.25rem;
+}
+
+.nav-item.active {
+  color: #101810;
+}
+
+.nav-item svg {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-item span {
+  font-size: 0.75rem;
 }
