@@ -8,97 +8,100 @@ body {
   font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
   background: #f9fbf9;
   color: #101810;
-  margin: 20px;
-}
-
-button {
-  display: none;
-  width: 100%;
-  padding: 8px 0;
-  margin: 8px auto;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-}
-
-p {
-  border-bottom: 1px dashed #ddd;
-}
-
-#pictureUrl {
-  margin: 0 auto;
-  width: 32%;
-  display: -moz-box;
-  display: -webkit-box;
-  display: box;
-  -moz-box-pack: center;
-  -moz-box-align: center;
-  -webkit-box-pack: center;
-  -webkit-box-align: center;
-  box-pack: center;
-  box-align: center;
-  -moz-border-radius: 256px;
-  -webkit-border-radius: 256px;
-  border-radius: 256px;
-}
-
-#accessToken, #utouId {
-  display: block;
-  overflow: auto;
+  margin: 0;
 }
 
 .container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #f9fbf9;
 }
 
+/* Header Styles */
 header {
   padding: 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
+  background: #f9fbf9;
 }
 
 .back-button {
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button svg {
+  width: 24px;
+  height: 24px;
+  fill: #101810;
 }
 
 h2 {
   flex: 1;
   text-align: center;
   font-size: 1.125rem;
+  font-weight: 500;
   margin-right: 3rem;
 }
 
+/* Main Content */
+main {
+  flex: 1;
+}
+
+/* Task Card Styles */
 .task-card {
   display: flex;
   align-items: center;
   padding: 1rem;
   gap: 1rem;
+  background: #f9fbf9;
   border-bottom: 1px solid #eaf1ea;
+  min-height: 72px;
 }
 
-.task-card img {
+.task-image {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 0.5rem;
-  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-shrink: 0;
 }
 
 .task-info {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .task-title {
   font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.25rem;
+  color: #101810;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .task-points {
   color: #5c8a5c;
   font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 400;
 }
 
 .task-button {
@@ -107,14 +110,30 @@ h2 {
   border: none;
   border-radius: 0.75rem;
   cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #101810;
+  min-width: 84px;
+  max-width: 480px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.task-button:hover {
+  background: #d8e5d8;
+}
+
+/* Navigation Styles */
 nav {
   margin-top: auto;
   display: flex;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem 0.75rem;
   border-top: 1px solid #eaf1ea;
+  background: #f9fbf9;
 }
 
 .nav-item {
@@ -125,17 +144,66 @@ nav {
   text-decoration: none;
   color: #5c8a5c;
   gap: 0.25rem;
+  padding: 0.25rem;
+  border-radius: 9999px;
 }
 
 .nav-item.active {
   color: #101810;
 }
 
+.nav-icon {
+  display: flex;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-item svg {
   width: 24px;
   height: 24px;
+  fill: currentColor;
 }
 
 .nav-item span {
   font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+}
+
+/* Remove default link underlines and add hover effects */
+a {
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  opacity: 0.8;
+}
+
+/* Remove the original conflicting styles */
+button {
+  display: block;
+}
+
+p {
+  border-bottom: none;
+}
+
+#pictureUrl {
+  display: none;
+}
+
+#accessToken, #utouId {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .container {
+    margin: 0;
+  }
+  
+  body {
+    margin: 0;
+  }
 }
