@@ -9,6 +9,44 @@
     <title>LIFF: LINE Front-end Framework</title>
     <script src="https://cdn.jsdelivr.net/gh/iamprompt/liff-sdk@latest/liff/edge/2/sdk.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      async function initializeLiff() {
+        try {
+          await liff.init({ liffId: "YOUR-LIFF-ID" });
+          if (!liff.isLoggedIn()) {
+            liff.login();
+          }
+        } catch (error) {
+          console.error("Error initializing LIFF:", error);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeLiff();
+        
+        // Handle navigation clicks
+        const navLinks = document.querySelectorAll('a[href="#"]');
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            navLinks.forEach(l => {
+              l.classList.remove('text-[#101810]');
+              l.classList.add('text-[#5c8a5c]');
+              l.querySelector('div').classList.remove('text-[#101810]');
+              l.querySelector('div').classList.add('text-[#5c8a5c]');
+              l.querySelector('p').classList.remove('text-[#101810]');
+              l.querySelector('p').classList.add('text-[#5c8a5c]');
+            });
+            link.classList.remove('text-[#5c8a5c]');
+            link.classList.add('text-[#101810]');
+            link.querySelector('div').classList.remove('text-[#5c8a5c]');
+            link.querySelector('div').classList.add('text-[#101810]');
+            link.querySelector('p').classList.remove('text-[#5c8a5c]');
+            link.querySelector('p').classList.add('text-[#101810]');
+          });
+        });
+      });
+    </script>
   </head>
   <body>
     <div
