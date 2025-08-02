@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Profile</title>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9fdf8;
+    margin: 0;
+    padding: 0;
+    color: #1a1a1a;
+    padding-bottom: 60px; /* prevent content from hiding behind navbar */
+  }
+  .profile-container {
+    text-align: center;
+    padding: 20px;
+  }
+  .profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .profile-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  .profile-level {
+    font-size: 14px;
+    color: #6aa96f;
+  }
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+  }
+  .stat-box {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.05);
+  }
+  .stat-number {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: #888;
+  }
+  .task-history {
+    padding: 0 20px;
+  }
+  .task-item {
+    display: flex;
+    align-items: center;
+    background: #f0f8f0;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .task-item i {
+    font-size: 18px;
+    color: #6aa96f;
+    margin-right: 10px;
+  }
+  .task-text {
+    font-size: 14px;
+  }
+  .task-date {
+    font-size: 12px;
+    color: #777;
+  }
+</style>
+</head>
+<body>
+
+<div class="profile-container">
+  <img id="pictureUrl" class="profile-img" src="https://via.placeholder.com/100" />
+  <div id="displayName" class="profile-name">Name</div>
+  <div class="profile-level">Level 3</div>
+  <div style="font-size: 12px; color: #6aa96f;">Joined 2 months ago</div>
+
+  <div class="stats">
+    <div class="stat-box">
+      <div id="points" class="stat-number">1200</div>
+      <div class="stat-label">Points</div>
+    </div>
+    <div class="stat-box">
+      <div id="tasksCompleted" class="stat-number">35</div>
+      <div class="stat-label">Tasks Completed</div>
+    </div>
+  </div>
+</div>
+
+<div class="task-history">
+  <h3>Task History</h3>
+  <div class="task-item">
+    <i class="fas fa-check-circle"></i>
+    <div>
+      <div class="task-text">Watched New Line Integration</div>
+      <div class="task-date">Completed on 2024-01-15</div>
+    </div>
+  </div>
+  <div class="task-item">
+    <i class="fas fa-check-circle"></i>
+    <div>
+      <div class="task-text">Played Line Games</div>
+      <div class="task-date">Completed on 2024-01-10</div>
+    </div>
+  </div>
+  <div class="task-item">
+    <i class="fas fa-check-circle"></i>
+    <div>
+      <div class="task-text">Browsed Items From Line Shop</div>
+      <div class="task-date">Completed on 2024-01-05</div>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar placeholder -->
+<div id="navbar"></div>
+
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<script>
+async function main() {
+  await liff.init({ liffId: "2007867025-ObJ0zkxp" });
+  if (!liff.isLoggedIn()) {
+    liff.login({ redirectUri: window.location.href });
+  } else {
+    const profile = await liff.getProfile();
+    document.getElementById("displayName").textContent = profile.displayName;
+    document.getElementById("pictureUrl").src = profile.pictureUrl;
+  }
+}
+
+async function loadNavbar() {
+  const response = await fetch('navbar.html');
+  const navbarHTML = await response.text();
+  document.getElementById('navbar').innerHTML = navbarHTML;
+}
+
+main();
+loadNavbar();
+</script>
+
+</body>
+</html>

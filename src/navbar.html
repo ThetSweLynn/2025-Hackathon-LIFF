@@ -1,0 +1,42 @@
+<!-- navbar.html -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+<style>
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 0;
+    z-index: 9999;
+  }
+  .bottom-nav a {
+    text-align: center;
+    flex: 1;
+    padding: 5px 0;
+    font-size: 12px;
+    color: #666;
+    text-decoration: none;
+  }
+  .bottom-nav a.active {
+    color: #2a7a2e;
+    font-weight: bold;
+  }
+  .bottom-nav i {
+    display: block;
+    font-size: 18px;
+  }
+</style>
+
+<div class="bottom-nav">
+  <a href="#" class="active"><i class="fas fa-tasks"></i>Tasks</a>
+  <a href="#"><i class="fas fa-gift"></i>Rewards</a>
+  <a href="#"><i class="fas fa-user"></i>Profile</a>
+</div>
