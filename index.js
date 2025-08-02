@@ -2,7 +2,7 @@
 async function initializeLiff() {
   try {
       // Replace "YOUR-LIFF-ID" with your actual LIFF ID
-      await liff.init({ liffId: "2007866032-G0dy5qEq" });
+      await liff.init({ liffId: "2007867025-ObJ0zkxp" });
       
       // Check if user is logged in
       if (!liff.isInClient() && !liff.isLoggedIn()) {
