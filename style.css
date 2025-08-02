@@ -1,14 +1,38 @@
+/* Global Reset */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fdf7;
+  color: #1e1e1e;
+}
+
+#pictureUrl {
+  margin: 0 auto;
+  width: 32%;
+  display: -moz-box;
+  display: -webkit-box;
+  display: box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  box-align: center;
+  -moz-border-radius: 256px;
+  -webkit-border-radius: 256px;
+  border-radius: 256px;
+}
+
+#accessToken,
+#utouId {
+  display: block;
+  overflow: auto;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;
-  background: #f9fbf9;
-  color: #101810;
-  margin: 0;
 }
 
 .container {
@@ -25,32 +49,14 @@ header {
   padding: 1rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
   background: #f9fbf9;
 }
 
-.back-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.back-button svg {
-  width: 24px;
-  height: 24px;
-  fill: #101810;
-}
-
 h2 {
-  flex: 1;
   text-align: center;
-  font-size: 1.125rem;
-  font-weight: 500;
-  margin-right: 3rem;
+  font-size: 1.35rem;
+  font-weight: 600;
 }
 
 /* Main Content */
@@ -128,12 +134,14 @@ main {
 
 /* Navigation Styles */
 nav {
-  margin-top: auto;
   display: flex;
   gap: 0.5rem;
   padding: 0.5rem 1rem 0.75rem;
   border-top: 1px solid #eaf1ea;
   background: #f9fbf9;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
 }
 
 .nav-item {
@@ -189,21 +197,258 @@ p {
   border-bottom: none;
 }
 
-#pictureUrl {
-  display: none;
+/* Profile Section */
+#profile {
+  padding: 20px;
+  text-align: center;
 }
 
-#accessToken, #utouId {
-  display: none;
+#profile img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .container {
-    margin: 0;
+#displayName {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#statusMessage {
+  font-size: 14px;
+  color: #5e5e5e;
+  margin: 4px 0;
+}
+
+#userId,
+#email {
+  font-size: 13px;
+  color: #7a7a7a;
+  margin: 2px 0;
+}
+
+/* Level and Join Date (put inside #feature section) */
+#feature {
+  font-size: 14px;
+  color: #4caf50;
+  margin-top: 8px;
+}
+
+/* Points and Tasks (add HTML inside #feature) */
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.stat-box {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  width: 120px;
+}
+
+.stat-box p {
+  margin: 4px 0;
+  font-size: 16px;
+}
+
+.stat-box .value {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Task History Section */
+#button {
+  text-align: left;
+  padding: 0 20px;
+}
+
+#button h2 {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  background-color: #edf7ed;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.task-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #4caf50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: #4caf50;
+}
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-info .title {
+  font-weight: 600;
+}
+
+.task-info .date {
+  font-size: 12px;
+  color: #5e5e5e;
+}
+
+#task-details {
+  background-color: #fefefe;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Back button */
+#back-to-tasks {
+  background-color: #eaf1ea;
+  color: #101810;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+#back-to-tasks:hover {
+  background-color: #d0d0d0;
+}
+
+/* Task detail text */
+.task-detail-content h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.task-detail-content p {
+  margin: 0.25rem 0;
+  color: #555;
+}
+
+/* Task detail image box */
+#detail-image {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  margin-top: 1rem;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#mark-complete {
+  padding: 10px 20px;
+  background-color: #eaf1ea;
+  color: rgb(10, 151, 53);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin: 1rem auto;
+}
+
+#mark-complete:hover {
+  background-color: #218838;
+}
+
+/* Simple fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
-  
-  body {
-    margin: 0;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+/* Reward Section*/
+
+#rewards {
+  padding: 16px;
+  background-color: #f9fdf7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#rewards h2 {
+  text-align: start;
+  font-size: medium;
+  margin: 1rem 0;
+}
+
+.reward-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.reward-info {
+  max-width: 65%;
+}
+
+.shop-name {
+  font-size: 12px;
+  color: #6c7a6e;
+  margin: 0;
+}
+
+.reward-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1e1e1e;
+  margin: 4px 0;
+}
+
+.reward-desc {
+  font-size: 14px;
+  color: #5e5e5e;
+  margin: 4px 0 12px;
+}
+
+.points {
+  display: inline-block;
+  background-color: #eaf4e7;
+  color: #1e1e1e;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.reward-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
 }
